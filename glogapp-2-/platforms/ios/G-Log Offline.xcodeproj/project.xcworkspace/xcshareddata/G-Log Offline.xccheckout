@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>52DF63D8-91FB-47D1-917C-E7B9231E4732</string>
+	<key>IDESourceControlProjectName</key>
+	<string>G-Log Offline</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>5B0591C6750E5802F20DD208A344C292A3FA25E2</key>
+		<string>https://github.com/johannady2/glogapp-2-ios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>glogapp-2-/platforms/ios/G-Log Offline.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>5B0591C6750E5802F20DD208A344C292A3FA25E2</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/johannady2/glogapp-2-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>5B0591C6750E5802F20DD208A344C292A3FA25E2</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>5B0591C6750E5802F20DD208A344C292A3FA25E2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>glogapp-2-ios</string>
+		</dict>
+	</array>
+</dict>
+</plist>

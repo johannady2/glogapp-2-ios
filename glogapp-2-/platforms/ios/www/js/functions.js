@@ -2591,8 +2591,8 @@ function queryItemDetailsByBarcode(tx,scanResult)
     
             $('.addToList').attr('data-quantity',qval);
             $('.addToList').attr('data-subtotal',glogtotal);
-		
-		    $('.addToCart').attr('data-quantity',qval);
+
+            $('.addToCart').attr('data-quantity',qval);
             $('.addToCart').attr('data-subtotal',glogtotal);
        
       

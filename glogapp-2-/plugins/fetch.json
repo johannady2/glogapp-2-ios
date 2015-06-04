@@ -21,7 +21,7 @@
             "type": "registry",
             "id": "org.apache.cordova.dialogs"
         },
-        "is_top_level": true,
+        "is_top_level": false,
         "variables": {}
     },
     "org.apache.cordova.device": {
@@ -44,30 +44,6 @@
         "source": {
             "type": "registry",
             "id": "org.apache.cordova.inappbrowser"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-device": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-device"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-dialogs": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-dialogs"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-inappbrowser": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-inappbrowser"
         },
         "is_top_level": true,
         "variables": {}

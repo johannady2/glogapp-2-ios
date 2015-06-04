@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <<<<<<< HEAD:config.xml
-<widget id="com.phonegapglogtest.wwww" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.smartmind.glogoffline" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>phonegapglogtest</name>
 =======
 <widget xmlns:cdv="http://cordova.apache.org/ns/1.0"

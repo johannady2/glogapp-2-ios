@@ -68,13 +68,13 @@
         }
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.glogapp.gaisano"
-        },
         "com.manateeworks.barcodescanner": {
             "PACKAGE_NAME": "com.glogapp.gaisano"
         },
         "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "com.glogapp.gaisano"
+        },
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.glogapp.gaisano"
         },
         "org.apache.cordova.inappbrowser": {
