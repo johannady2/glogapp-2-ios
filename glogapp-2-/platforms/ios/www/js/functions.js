@@ -4,16 +4,74 @@
 var networkstatus = '';
 //var isOffline = 'onLine' in navigator && !navigator.onLine;
 var ref;
+var loadvidonce = 0;
+
+var timerId = setInterval(function(){  bugFix(); }, 3000);
+
+/*
 
 function onBodyLoad()
-{   
-    document.addEventListener("offline", onDeviceOffline, false);
-    document.addEventListener("online", onDeviceOnline, false);
-    
+{	
+	document.addEventListener("deviceready", videoDownloadAndStart , false);
 
-
-    
+	checkNetwork();
+	
+	
+	
 }
+
+function checkNetwork()
+{
+	
+	document.addEventListener("offline", onDeviceOffline, false);
+    document.addEventListener("online", onDeviceOnline, false);
+	
+
+}	*/
+
+function onBodyLoad()
+{	
+	document.addEventListener("offline", onDeviceOffline, false);
+    document.addEventListener("online", onDeviceOnline, false);
+	
+	
+	
+}
+
+
+function bugFix()//sometimes noti popups don't appear so we check it and make them appear.
+{
+	
+	if($('.splashpageindicator').is(":visible"))
+	{
+		if(($('.slideToUnlock').is(":visible") == false) && ($('.splashloading').is(":visible")== false))
+		{
+			
+			
+			if(($('.noti-offline').is(":hidden") == true) && ($('.noti-online').is(":hidden") == true))
+			{
+				
+				if(networkstatus !='disconnected' && networkstatus !='connected')
+				{
+					location.reload();
+				}
+			}
+			
+		}
+		else
+		{
+			$('.noti-offline').hide();
+			$('.noti-online').hide();
+		}
+		
+		
+
+	}
+}
+
+
+
+
   //listen for changes
   
 
@@ -188,32 +246,6 @@ function initializeDB()
 }
 
 
-function onDeviceOffline()
-{
-    if($('.splashpageindicator').length <= 0)//Only reload when not in splash page.
-    {
-        location.reload();
-    }
-
-    
-    initializeDB();
-    
-    
-   
-    $('.noti-online , .splashscreencont').hide();
-    $('.noti-blanket , .noti-offline').show();
-    if(networkstatus != 'disconnected' || networkstatus == '')
-    {
-        networkstatus = 'disconnected';
-      
-    }
-}
-
-$('.btn-noti-offline').on('click',function()
-{
-    $('.noti-blanket, .noti-offline').hide();
-    $('.splashscreencont').show();
-});
 
 function isjsonready()
 { 
@@ -318,6 +350,9 @@ function isjsonready()
 function onDeviceOnline()
 { 
  
+	
+	
+	
   if($('.splashpageindicator').length <= 0)//Only reload when not in splash page.
    {
        location.reload();
@@ -327,7 +362,8 @@ function onDeviceOnline()
   
     $('.noti-offline, .splashscreencont').hide();
    $('.noti-blanket , .noti-online').show();
-    
+	
+  
 
 
     if((networkstatus != 'connected' || networkstatus == ''))
@@ -620,6 +656,8 @@ function onDeviceOnline()
             }).then(function(objects)
             {
                   initializeDB();
+				
+					
              
             });
     }
@@ -632,9 +670,46 @@ $('.btn-noti-online').on('click',function()
     
     $('.noti-blanket, .noti-online').hide();
     $('.splashscreencont').show();
+
+	
     
+});
+
+
+
+function onDeviceOffline()
+{
+	
+
+	
+    if($('.splashpageindicator').length <= 0)//Only reload when not in splash page.
+    {
+        location.reload();
+    }
 
     
+    initializeDB();
+    
+    
+   
+    $('.noti-online , .splashscreencont').hide();
+    $('.noti-blanket , .noti-offline').show();
+
+	
+    if(networkstatus != 'disconnected' || networkstatus == '')
+    {
+        networkstatus = 'disconnected';
+      
+    }
+}
+
+$('.btn-noti-offline').on('click',function()
+{
+    $('.noti-blanket, .noti-offline').hide();
+    $('.splashscreencont').show();
+	
+
+
 });
 
 
@@ -1342,9 +1417,17 @@ function deleteExpiredPromos(tx,results)
     
 	tx.executeSql('DELETE FROM CATALOGUE_MASTER WHERE SysPk_CatMstr IN('+ deleteString +')');
 	tx.executeSql('DELETE FROM INVENTORY_MASTER_CATALOGUE WHERE SysFk_CatMstr_InvtyCat IN('+ deleteString +')',[],function(){
+	
                 $('.splashloading').hide();//ALWAYS AT CALLBACK OF LAST DELETE STATEMENT IN THIS FUNCTION
                 $('.slideToUnlock').show();//ALWAYS AT CALLBACK OF LAST DELETE STATEMENT IN THIS FUNCTION
+		
+
+			
+				
                 },errorCB);
+	
+	
+
 	
 }
 
@@ -1356,9 +1439,57 @@ function deleteExpiredPromos(tx,results)
 /*------------------------------------------------------------------*/
 
 
+function videoDownloadAndStart()
+{	
+	if(loadvidonce == 0)
+	{
+		loadvidonce = 1;
+		//alert(cordova.file);
+
+		var myFilename = "sample.mp4";
+		var myUrl = cordova.file.applicationDirectory + "www/" + myFilename;
+
+		var fileTransfer = new FileTransfer();
+		var filePath = cordova.file.dataDirectory + myFilename;
+
+		//alert(myUrl);
+		//alert(filePath);
+
+		fileTransfer.download(encodeURI(myUrl), filePath, (function(entry)
+		 {
+
+		 // var vid = document.getElementById("bgvid");//(original code from example)
+		 //vid.src = entry.nativeURL; //(original code from example)
+		  //vid.loop = true;//(original code from example)
+
+	
+		 //$('#bgvid').html('<source src="http://techslides.com/demos/sample-videos/small.mp4" type="video/mp4">');		
+		 $('#bgvid').html('<source src="' + entry.toNativeURL() + '" type="video/mp4">');		
+		//alert( $('#bgvid').html());
 
 
 
+
+
+
+		}), (function(error) {
+		  alert("Video download error: source " + error.source);
+		  alert("Video download error: target " + error.target);
+		}), true, {
+		  headers: {
+			Authorization: "Basic dGVzdHVzZXJuYW1lOnRlc3RwYXNzd29yZA=="
+		  }
+		});
+	}
+}
+
+
+
+function replay()
+{ 
+    document.getElementsByTagName('video').currentTime = 0;
+    document.getElementsByTagName('video')[0].play();
+}
 
 
 
@@ -2591,8 +2722,8 @@ function queryItemDetailsByBarcode(tx,scanResult)
     
             $('.addToList').attr('data-quantity',qval);
             $('.addToList').attr('data-subtotal',glogtotal);
-
-            $('.addToCart').attr('data-quantity',qval);
+		
+		    $('.addToCart').attr('data-quantity',qval);
             $('.addToCart').attr('data-subtotal',glogtotal);
        
       
