@@ -2681,12 +2681,12 @@ function queryItemDetailsByBarcode(tx,scanResult)
         
         //alert('glogqlen ='+glogqlen);
         
-        if(glogqlen.length>0 && currentvalue != 0 && currentvalue !='0' && testinput(/[^0-9.]/, currentvalue)==0)//if not empty && not zero && (does not contain any none numeric && glogqlen == 1)
+        if(glogqlen.length>0 && currentvalue != 0 && currentvalue !='0' && testinput(/[^0-9]/, currentvalue)==0)//if not empty && not zero && (does not contain any none numeric && glogqlen == 1)
         {
           //alert('in if');
             //alert('currentvalue =' + currentvalue);
             
-            var newvalue = currentvalue.toString().replace(/[^0-9\.]+/g, '');
+            var newvalue = currentvalue.toString().replace(/[^0-9]+/g, '');
             $('#glogquantity').val(newvalue);
             var qval = $('#glogquantity').val();
             
@@ -2699,7 +2699,7 @@ function queryItemDetailsByBarcode(tx,scanResult)
             currentvalue = 1;
            // //alert('currentvalue =' + currentvalue);
             
-            var newvalue = currentvalue.toString().replace(/[^0-9\.]+/g, '');
+            var newvalue = currentvalue.toString().replace(/[^0-9]+/g, '');
             $('#glogquantity').val('');
             var qval = 1;
 
@@ -2835,9 +2835,9 @@ function editOrderPageQuantityInputListener()
          var editorderlen = $.trim($('.edit-order-quantity').val());
 
         
-        if(editorderlen.length>0 && currentq != 0 && currentq !='0' && testinput(/[^0-9.]/, currentq)==0)//if not empty && not zero && (does not contain any none numeric && glogqlen == 1)
+        if(editorderlen.length>0 && currentq != 0 && currentq !='0' && testinput(/[^0-9]/, currentq)==0)//if not empty && not zero && (does not contain any none numeric && glogqlen == 1)
         {
-            var newq = currentq.toString().replace(/[^0-9\.]+/g, '');
+            var newq = currentq.toString().replace(/[^0-9]+/g, '');
             $('.edit-order-quantity').val(newq);
             var qval = $('.edit-order-quantity').val();
    
@@ -2845,7 +2845,7 @@ function editOrderPageQuantityInputListener()
         else
         {
             currentq = 1;
-            var newq = currentq.toString().replace(/[^0-9\.]+/g, '');
+            var newq = currentq.toString().replace(/[^0-9]+/g, '');
             $('.edit-order-quantity').val('');
             var qval = 1;
 
